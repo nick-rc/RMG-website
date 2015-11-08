@@ -130,7 +130,14 @@ INSTALLED_APPS = (
     'rmgweb.database',
     'rmgweb.pdep',
     'rmgweb.rmg',
+
+    # kineticmodels website apps
+    'rmgweb.kineticmodels',
 )
+
+# Add kineticssite WSGI Application here
+# May remove if unnecessary
+# WSGI_APPLICATION = 'kineticssite.wsgi.application'
 
 # Settings relating to user account management
 LOGIN_URL = '/login'

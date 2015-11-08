@@ -45,24 +45,24 @@ urlpatterns = patterns('rmgweb',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
-    
+
     # Restart the django processes in the webserver
     (r'^restart$', 'main.views.restartWSGI'),
     # Show debug info
     (r'^debug$', 'main.views.debug'),
-    
+
     # The RMG website homepage
     (r'^$', 'main.views.index'),
-    
+
     # The privacy policy
     (r'^privacy$', 'main.views.privacy'),
-    
+
     # User account management
     (r'^login$', 'main.views.login'),
     (r'^logout$', 'main.views.logout'),
     (r'^profile$', 'main.views.editProfile'),
     (r'^signup', 'main.views.signup'),
-    
+
     (r'^user/(?P<username>\w+)$', 'main.views.viewProfile'),
 
     # Database
@@ -74,7 +74,7 @@ urlpatterns = patterns('rmgweb',
     # Molecule drawing
     (r'^molecule/(?P<adjlist>[\S\s]+)$', 'main.views.drawMolecule'),
     (r'^group/(?P<adjlist>[\S\s]+)$', 'main.views.drawGroup'),
-    
+
     (r'^adjacencylist/(?P<identifier>.*)$', 'main.views.getAdjacencyList'),
     (r'^cactus/(?P<query>.*)$', 'main.views.cactusResolver'),
     (r'^nistcas/(?P<inchi>.*)$', 'main.views.getNISTcas'),
@@ -86,15 +86,18 @@ urlpatterns = patterns('rmgweb',
 
     # RMG-Py Stuff
     (r'^simulate/', include('rmgweb.rmg.urls')),
-    
+
     # RMG Input Form
     (r'^input', 'rmg.views.input'),
-    
+
     # Documentation auto-rebuild
     (r'^rebuild$', 'main.views.rebuild'),
 
+    # kineticmodels links
+    url(r'^kineticmodels/', include('kineticmodels.urls')),
+
     # Remember to update the /media/robots.txt file to keep web-crawlers out of pages you don't want indexed.
-    
+
 )
 
 # When developing in Django we generally don't have a web server available to
